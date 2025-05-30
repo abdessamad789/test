@@ -26,6 +26,32 @@ def inscription():
     print(f"✅ Inscription réussie pour {nom}.")
     print(f"📧 Email de confirmation envoyé à {email} (simulé).")
 
+def calculatrice():
+    print("=== Calculatrice ===")
+    while True:
+        try:
+            a = float(input("Entrez le premier nombre : "))
+            op = input("Opération (+, -, *, / ou q pour quitter) : ")
+            if op == "q":
+                break
+            b = float(input("Entrez le deuxième nombre : "))
+
+            if op == "+":
+                print(f"Résultat : {a + b}")
+            elif op == "-":
+                print(f"Résultat : {a - b}")
+            elif op == "*":
+                print(f"Résultat : {a * b}")
+            elif op == "/":
+                if b != 0:
+                    print(f"Résultat : {a / b}")
+                else:
+                    print("❌ Division par zéro interdite.")
+            else:
+                print("❌ Opération inconnue.")
+        except ValueError:
+            print("❌ Veuillez entrer des nombres valides.")
+
 def connexion():
     print("=== Connexion ===")
     email = input("Email : ")
@@ -37,6 +63,7 @@ def connexion():
                 nom_enregistre, email_enregistre, mdp_enregistre = ligne.strip().split(",")
                 if email == email_enregistre and mot_de_passe == mdp_enregistre:
                     print(f"✅ Connexion réussie. Bienvenue, {nom_enregistre} !")
+                    calculatrice()
                     return
     except FileNotFoundError:
         print("❌ Aucun utilisateur inscrit pour le moment.")
